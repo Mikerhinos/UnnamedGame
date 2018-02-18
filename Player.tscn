@@ -67,7 +67,7 @@ rings = 8
 radius = 1.0
 height = 1.0
 
-[node name="KinematicBody" type="KinematicBody"]
+[node name="KinematicBody" type="KinematicBody" index="0"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -129,7 +129,7 @@ far = 300.0
 transform = Transform( 0.0915677, -0.995537, -0.022811, 0.994603, 0.0925559, -0.0468838, 0.0487858, -0.0183948, 0.998639, 0.70689, -1.42818, 0.331146 )
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
-light_energy = 1.0
+light_energy = 16.0
 light_indirect_energy = 1.0
 light_negative = false
 light_specular = 0.5

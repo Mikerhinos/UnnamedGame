@@ -11,7 +11,7 @@ const FLY_SPEED = 40
 const FLY_ACCEL = 4
 
 # variables walk
-var gravity = 9.8 * 3
+var gravity = -9.8 * 3
 const MAX_SPEED = 20
 const MAX_RUNNING_SPEED = 30
 const ACCEL = 2
@@ -60,13 +60,27 @@ func walk(delta):
 		speed = MAX_SPEED
 	
 	# vitesse maxi
-	var target = direction * FLY_SPEED
+	var target = direction * speed
+	
+	var acceleration
+	# si la direction * vitesse > 0 alors accélération, sinon décélération
+	if direction.dot(temp_velocity) > 0:
+		acceleration = ACCEL
+	else:
+		acceleration = DEACCEL
 	
 	# accélération progressive
-	velocity = velocity.linear_interpolate(target, FLY_ACCEL * delta)
+	temp_velocity = temp_velocity.linear_interpolate(target, acceleration * delta)
+	
+	velocity.x = temp_velocity.x
+	velocity.z = temp_velocity.z
 	
 	# move et en cas de rencontre avec un obstacle, glisse le long de celui ci
-	move_and_slide(velocity)
+	velocity = move_and_slide(velocity, Vector3(0, 1, 0))
+	
+	if Input.is_action_just_pressed("jump"):
+		if is_on_floor():
+			velocity.y = jump_height
 	
 func fly(delta):
 		# reset la direction du player
