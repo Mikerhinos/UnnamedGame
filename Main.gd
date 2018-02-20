@@ -1,8 +1,6 @@
 extends Spatial
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
+var fullscreen = false
 
 func _ready():
 	# cache le curseur de souris
@@ -16,3 +14,11 @@ func _process(delta):
 	# Si le joueur appuie sur le raccourci reset, relance le jeu
 	if (Input.is_action_just_pressed("reset")):
 		get_tree().reload_current_scene()
+		
+	if (Input.is_action_just_pressed("set_fullscreen")):
+		if (fullscreen == false):
+			OS.window_fullscreen = true
+			fullscreen = true
+		else: 
+			OS.window_fullscreen = false
+			fullscreen = false

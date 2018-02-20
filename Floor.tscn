@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Images/octostone-Unreal-Engine/octostoneNormalc.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Images/octostone-Unreal-Engine/octostoneRoughness2.png" type="Texture" id=5]
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=1]
 
 render_priority = 0
 flags_transparent = false
@@ -55,9 +55,9 @@ subsurf_scatter_enabled = false
 transmission_enabled = false
 refraction_enabled = false
 detail_enabled = false
-uv1_scale = Vector3( 15, 15, 1 )
+uv1_scale = Vector3( 1, 1, 1 )
 uv1_offset = Vector3( 0, 0, 0 )
-uv1_triplanar = false
+uv1_triplanar = true
 uv1_triplanar_sharpness = 1.0
 uv2_scale = Vector3( 1, 1, 1 )
 uv2_offset = Vector3( 0, 0, 0 )
@@ -67,9 +67,9 @@ proximity_fade_enable = false
 distance_fade_enable = false
 _sections_unfolded = [ "Albedo", "Ambient Occlusion", "Depth", "Metallic", "NormalMap", "Roughness", "UV1" ]
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="CubeMesh" id=2]
 
-material = SubResource( 4 )
+material = SubResource( 1 )
 size = Vector3( 2, 2, 2 )
 subdivide_width = 0
 subdivide_height = 0
@@ -93,7 +93,7 @@ lod_min_distance = 0.0
 lod_min_hysteresis = 0.0
 lod_max_distance = 0.0
 lod_max_hysteresis = 0.0
-mesh = SubResource( 1 )
+mesh = SubResource( 2 )
 skeleton = NodePath("..")
 material/0 = null
 _sections_unfolded = [ "Geometry", "Transform", "material" ]
