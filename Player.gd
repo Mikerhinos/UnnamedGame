@@ -1,6 +1,8 @@
 extends KinematicBody
 
+# variables caméra
 var camera_angle = 0
+var camera_change = Vector2()
 var sensitivity = 0.3
 
 var velocity = Vector3()
@@ -9,6 +11,7 @@ var direction = Vector3()
 # variables fly
 const FLY_SPEED = 40
 const FLY_ACCEL = 4
+var flying = false
 
 # variables walk
 var gravity = -9.8 * 3
@@ -21,7 +24,11 @@ const DEACCEL = 6
 var jump_height = 15
 
 func _physics_process(delta):
-	walk(delta)
+	aim()
+	if flying:
+		fly(delta)
+	else:
+		walk(delta)
 	
 func walk(delta):
 	# reset la direction du player
@@ -78,9 +85,8 @@ func walk(delta):
 	# move et en cas de rencontre avec un obstacle, glisse le long de celui ci
 	velocity = move_and_slide(velocity, Vector3(0, 1, 0))
 	
-	if Input.is_action_just_pressed("jump"):
-		if is_on_floor():
-			velocity.y = jump_height
+	if is_on_floor() and Input.is_action_just_pressed("jump"):
+		velocity.y = jump_height
 	
 func fly(delta):
 		# reset la direction du player
@@ -117,11 +123,17 @@ func fly(delta):
 
 func _input(event):
 	if event is InputEventMouseMotion :
+		camera_change = event.relative
+		
+func aim():
+	if camera_change.length() > 0 :
 		# camera horizontal
-		$Head.rotate_y(deg2rad(-event.relative.x * sensitivity))
-
+		$Head.rotate_y(deg2rad(-camera_change.x * sensitivity))
+	
 		# camera vertical
-		var change = -event.relative.y * sensitivity
+		var change = -camera_change.y * sensitivity
 		if change + camera_angle < 90 and change + camera_angle > -90 :
 			$Head/Camera.rotate_x(deg2rad(change))
 			camera_angle += change
+		camera_change = Vector2()
+		

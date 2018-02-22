@@ -2,25 +2,26 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/harshbricks-metalness.png-0f3af9a69d0d56932bd931e806d285f3.stex"
+path.s3tc="res://.import/harshbricks-metalness.png-0f3af9a69d0d56932bd931e806d285f3.s3tc.stex"
+path.etc2="res://.import/harshbricks-metalness.png-0f3af9a69d0d56932bd931e806d285f3.etc2.stex"
 
 [deps]
 
 source_file="res://Assets/Images/harshbricks-Unreal-Engine/harshbricks-metalness.png"
 source_md5="53bca7e32452593b44ffb6977e0e1230"
 
-dest_files=[ "res://.import/harshbricks-metalness.png-0f3af9a69d0d56932bd931e806d285f3.stex" ]
-dest_md5="aa1d4708a8821d0aa0f0a961fb5e1306"
+dest_files=[ "res://.import/harshbricks-metalness.png-0f3af9a69d0d56932bd931e806d285f3.s3tc.stex", "res://.import/harshbricks-metalness.png-0f3af9a69d0d56932bd931e806d285f3.etc2.stex" ]
+dest_md5="acba03659b48c5fe530dc53013cde684"
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=true
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=2
 process/fix_alpha_border=true
@@ -28,5 +29,5 @@ process/premult_alpha=false
 process/HDR_as_SRGB=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
