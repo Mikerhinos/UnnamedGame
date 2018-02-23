@@ -9,8 +9,8 @@ var velocity = Vector3()
 var direction = Vector3()
 
 # variables fly
-const FLY_SPEED = 40
-const FLY_ACCEL = 4
+const FLY_SPEED = 15
+const FLY_ACCEL = 2
 var flying = false
 
 # variables walk
@@ -137,3 +137,13 @@ func aim():
 			camera_angle += change
 		camera_change = Vector2()
 		
+
+
+func _on_Area_body_entered( body ):
+	if body.name == "Player" :
+		flying = true
+
+
+func _on_Area_body_exited( body ):
+	if body.name == "Player" :
+		flying = false
